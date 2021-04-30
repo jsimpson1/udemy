@@ -50,21 +50,20 @@ class _MyHomePageState extends State<MyHomePage> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
-  final List<Transaction> _userTransactions = [];
-  // [
-  //   Transaction(
-  //     id: "t1",
-  //     title: "New Shoes",
-  //     amount: 69.99,
-  //     date: DateTime.now(),
-  //   ),
-  //   Transaction(
-  //     id: "t2",
-  //     title: "Weekly Groceries",
-  //     amount: 75.25,
-  //     date: DateTime.now(),
-  //   ),
-  // ];
+  final List<Transaction> _userTransactions = [
+    Transaction(
+      id: "t1",
+      title: "New Shoes",
+      amount: 69.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: "t2",
+      title: "Weekly Groceries",
+      amount: 75.25,
+      date: DateTime.now(),
+    ),
+  ];
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where(
