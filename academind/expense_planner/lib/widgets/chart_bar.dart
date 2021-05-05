@@ -6,7 +6,8 @@ class ChartBar extends StatelessWidget {
   final double spendingAmount;
   final double spendingPctOfTotal; // 0 to 1 value
 
-  ChartBar({this.label, this.spendingAmount, this.spendingPctOfTotal});
+  //  const makes this construtor immutable
+  const ChartBar({this.label, this.spendingAmount, this.spendingPctOfTotal});
 
   @override
   Widget build(BuildContext context) {

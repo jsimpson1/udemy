@@ -166,6 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
+    final theme = Theme.of(context);
     final isLandscape = mediaQuery.orientation == Orientation.landscape;
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
@@ -214,10 +215,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Text(
                     'Show Chart',
-                    style: Theme.of(context).textTheme.title,
+                    style: theme.textTheme.title,
                   ),
                   Switch.adaptive(
-                    activeColor: Theme.of(context).accentColor,
+                    activeColor: theme.accentColor,
                     value: _showChart,
                     onChanged: (val) {
                       setState(() {
