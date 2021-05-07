@@ -35,21 +35,18 @@ class TransactionList extends StatelessWidget {
               );
             },
           )
-        : ListView.builder(
-            itemBuilder: (ctx, index) {
-              return Card(
-                elevation: 5,
-                margin: const EdgeInsets.symmetric(
-                  vertical: 8,
-                  horizontal: 5,
-                ),
-                child: TransactionItem(
-                    transaction: transactions[index],
-                    theme: theme,
-                    deleteTx: deleteTx),
-              );
-            },
-            itemCount: transactions.length,
+        : ListView(
+            // ListView.builder not use here b/c of but that doesnt handle changing state properly
+            children: transactions
+                .map(
+                  (tx) => TransactionItem(
+                      key: ValueKey(tx
+                          .id), // not UniqueKey b/c then key changes on each rebuild
+                      transaction: tx,
+                      theme: theme,
+                      deleteTx: deleteTx),
+                )
+                .toList(),
           );
   }
 }

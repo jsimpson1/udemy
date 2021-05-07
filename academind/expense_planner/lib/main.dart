@@ -64,56 +64,74 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
   final List<Transaction> _userTransactions = [
-    Transaction(
-      id: "t1",
-      title: "New Shoes",
-      amount: 69.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: "t2",
-      title: "Weekly Groceries",
-      amount: 75.25,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: "t3",
-      title: "Various stuff",
-      amount: 75.25,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: "t4",
-      title: "Whatever",
-      amount: 75.25,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: "t5",
-      title: "Blah blah",
-      amount: 75.25,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: "t6",
-      title: "Whatever",
-      amount: 75.25,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: "t7",
-      title: "Blah blah",
-      amount: 75.25,
-      date: DateTime.now(),
-    ),
+    // Transaction(
+    //   id: "t1",
+    //   title: "New Shoes",
+    //   amount: 69.99,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: "t2",
+    //   title: "Weekly Groceries",
+    //   amount: 75.25,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: "t3",
+    //   title: "Various stuff",
+    //   amount: 75.25,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: "t4",
+    //   title: "Whatever",
+    //   amount: 75.25,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: "t5",
+    //   title: "Blah blah",
+    //   amount: 75.25,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: "t6",
+    //   title: "Whatever",
+    //   amount: 75.25,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: "t7",
+    //   title: "Blah blah",
+    //   amount: 75.25,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   bool _showChart = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // need initState to have this actually do soemthing
+    print(state);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where(
