@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../dummy_data.dart';
 import '../widgets/meal_item.dart';
 import '../models/meal.dart';
 
@@ -23,8 +22,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   @override
   void didChangeDependencies() {
     if (!_loadedInitData) {
-      final routeArgs =
-          ModalRoute.of(context).settings.arguments as Map<String, String>;
+      final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, String>;
       categoryTitle = routeArgs['title'];
       final categoryId = routeArgs['id'];
 
@@ -64,7 +62,6 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
             duration: meal.duration,
             complexity: meal.complexity,
             affordability: meal.affordability,
-            removeItem: _removeMeal,
           );
         },
         itemCount: displayedMeals.length,
