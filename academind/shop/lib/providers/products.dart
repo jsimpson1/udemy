@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/product.dart';
+import './product.dart';
 
 // only change data inside this class b/c we need to notify for data changes to get picked up
 class Products with ChangeNotifier {
